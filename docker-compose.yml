@@ -1,0 +1,28 @@
+# Phase 7 stub — Docker Compose packaging for office self-hosting.
+#
+# Placeholder only. When Phase 7 lands this file will define:
+#   - backend  : python image, mounts ./backend/agl.db (volume) + ./backend/photos
+#   - frontend : node build stage serving static dist via nginx (or Caddy)
+#   - network  : office-LAN only; no published ports beyond 80/443
+#
+# Nothing here is runnable yet — no Dockerfiles exist in Phase 1.
+version: "3.9"
+
+services:
+  backend:
+    image: agl-audit-backend:phase7
+    build: ./backend
+    volumes:
+      - agl-data:/data
+    restart: unless-stopped
+    # ports: []  # internal network only
+
+  frontend:
+    image: agl-audit-frontend:phase7
+    build: ./frontend
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  agl-data:

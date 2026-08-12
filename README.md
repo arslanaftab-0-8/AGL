@@ -70,9 +70,9 @@ cd E:\Auditor
 git init
 git add .
 git commit -m "AGL QA audit platform — frontend + backend"
-# create an empty repo on github.com (e.g. arslanaftab-0-8/agl-audit), then:
+# create an empty repo on github.com (e.g. arslanaftab-0-8/AGL), then:
 git branch -M main
-git remote add origin https://github.com/arslanaftab-0-8/agl-audit.git
+git remote add origin https://github.com/arslanaftab-0-8/AGL.git
 git push -u origin main
 ```
 
@@ -83,7 +83,7 @@ are gitignored, so no local data or secrets get committed.
 
 1. **New + PostgreSQL** → create a free database (region near the web service)
    → copy its **Internal Database URL**.
-2. **New + Web Service** → connect the GitHub repo → pick `agl-audit`.
+2. **New + Web Service** → connect the GitHub repo → pick `AGL`.
 3. **Root directory**: `backend`
 4. **Environment**: `Python` (auto-detected from `requirements.txt`; `runtime.txt`
    pins Python 3.11).
@@ -110,13 +110,13 @@ are gitignored, so no local data or secrets get committed.
 
 ### 3. Frontend → Vercel
 
-1. **Add New Project** → connect the GitHub repo → pick `agl-audit`.
+1. **Add New Project** → connect the GitHub repo → pick `AGL`.
 2. **Root directory**: `frontend`
 3. Framework preset: **Vite** (auto-detected; build `npm run build`, output
    `dist` — `vercel.json` adds the SPA fallback for client-side routes).
 4. **Environment variables**: `VITE_API_URL=https://<your-render-app>.onrender.com`
    (no trailing slash; the frontend appends `/api`).
-5. Deploy → live URL like `https://agl-audit.vercel.app`.
+5. Deploy → live URL like `https://agl.vercel.app`.
 
 CORS is already wide open on the backend (`allow_origins=["*"]`), so the
 Vercel domain can call the Render API without changes. After setting
